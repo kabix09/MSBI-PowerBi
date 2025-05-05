@@ -1,0 +1,2016 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/5/2025 3:23:36 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-NSG5088"
+  DTS:CreatorName="DESKTOP-NSG5088\user"
+  DTS:DTSID="{E550F638-398E-4A96-B10B-207CAEA7D18B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{E8F1ACE9-CBE3-4134-B6B5-3915D8C2FEC7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-NSG5088.Frania]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F8647518-78BB-44CA-8CA8-7DBC64AFF85D}"
+      DTS:ObjectName="DESKTOP-NSG5088.Frania">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-NSG5088;User ID=;Initial Catalog=Frania;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Initial File Name=;Server SPN=;Authentication=;Access Token=;Application Name=SSIS-Package-{F8647518-78BB-44CA-8CA8-7DBC64AFF85D}DESKTOP-NSG5088.Frania;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Frania]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{71F3B99B-CCF1-4BCC-A02C-D61A980859FC}"
+      DTS:ObjectName="Flat File Frania">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1045"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1250"
+          DTS:ConnectionString="C:\Users\user\Desktop\SSIS+SSAS+SSRS+PowerBi\data\frania2004.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ID"
+              DTS:DTSID="{A4B52149-3EFC-44A6-B08D-D42C4D7F6E94}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="hist_plan"
+              DTS:DTSID="{2E879AEB-4198-422E-A0C7-8DF05A7BF930}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="data"
+              DTS:DTSID="{3A16C2DE-78EA-4E4F-87E3-C6E298C885DD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="grupa"
+              DTS:DTSID="{DB08F3D9-624D-420F-8D26-1CC50BF61599}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="podgrupa"
+              DTS:DTSID="{BEF42ECF-13ED-4466-AF68-C2411D4D3DB9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="sprzet"
+              DTS:DTSID="{A78785A3-42CE-4427-B572-8EDF41695721}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="klient"
+              DTS:DTSID="{F7AF7C49-C7D3-4928-8955-E49CB4AB89FC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="region"
+              DTS:DTSID="{4ECCF67D-6C0D-4752-A7A1-5BCFB0C9CEBB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ilosc"
+              DTS:DTSID="{52C19C77-BE4C-4383-8E9E-F7DBBEB8C68C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="cena_hurt"
+              DTS:DTSID="{063D1634-46EF-4B63-905D-A22111F4BB69}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="obrot"
+              DTS:DTSID="{94BE7620-9C84-485B-A9A4-0450B0C48FA1}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Klienci"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{b9e9ac61-9208-400f-aadf-8a5e49d108fc}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Klienci"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Klienci\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Klienci\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Klienci\Derived Column.Inputs[Derived Column Input].Columns[klient]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="klient"
+                      cachedSortKeyPosition="1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Klienci\Sort.Outputs[Sort Output].Columns[klient]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\DFT Klienci\Sort.Outputs[Sort Output].Columns[klient]} == "" ? "inny" : #{Package\DFT Klienci\Sort.Outputs[Sort Output].Columns[klient]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">klient == "" ? "inny" : klient</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Klienci\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT Klienci\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Klienci\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT Klienci\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Klienci\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Klienci\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Klienci\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Klienci\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Klienci\Flat File Source Frania2004"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1045"
+              name="Flat File Source Frania2004"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Klienci\Flat File Source Frania2004.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Frania]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Frania]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].Columns[klient]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].ExternalColumns[klient]"
+                      length="50"
+                      lineageId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].Columns[klient]"
+                      name="klient"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].ExternalColumns[ID]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].ExternalColumns[hist_plan]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="hist_plan" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].ExternalColumns[data]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="data" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].ExternalColumns[grupa]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="grupa" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].ExternalColumns[podgrupa]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="podgrupa" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].ExternalColumns[sprzet]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="sprzet" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].ExternalColumns[klient]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="klient" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].ExternalColumns[region]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].ExternalColumns[ilosc]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="ilosc" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].ExternalColumns[cena_hurt]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="cena_hurt" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].ExternalColumns[obrot]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="obrot" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1250"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Klienci\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Klienci]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Klienci\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-NSG5088.Frania]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-NSG5088.Frania]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Klienci\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Klienci\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[klient]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="klient"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DFT Klienci\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Klient]"
+                      lineageId="Package\DFT Klienci\Sort.Outputs[Sort Output].Columns[klient]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Klient]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Klient" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Klienci\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT Klienci\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Klienci\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Klienci\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Klienci\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Klienci\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Klienci\OLE DB Source Frania200507"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source Frania200507"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[frania200507]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Klienci\OLE DB Source Frania200507.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-NSG5088.Frania]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-NSG5088.Frania]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].Columns[klient]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].ExternalColumns[klient]"
+                      length="50"
+                      lineageId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].Columns[klient]"
+                      name="klient"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].ExternalColumns[hist_plan]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="hist_plan" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].ExternalColumns[data]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="data" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].ExternalColumns[grupa]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="grupa" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].ExternalColumns[podgrupa]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="podgrupa" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].ExternalColumns[sprzet]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="sprzet" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].ExternalColumns[klient]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="klient" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].ExternalColumns[ilosc]"
+                      dataType="i4"
+                      name="ilosc" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].ExternalColumns[cena_hurt]"
+                      dataType="cy"
+                      name="cena_hurt" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].ExternalColumns[obrot]"
+                      dataType="cy"
+                      name="obrot" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Error Output].Columns[klient]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Error Output].Columns[klient]"
+                      name="klient" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Klienci\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT Klienci\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Klienci\Sort.Inputs[Sort Input].Columns[klient]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="klient"
+                      lineageId="Package\DFT Klienci\Union All.Outputs[Union All Output 1].Columns[klient]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Klienci\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Klienci\Sort.Outputs[Sort Output].Columns[klient]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Klienci\Sort.Outputs[Sort Output].Columns[klient]"
+                      name="klient"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT Klienci\Union All.Outputs[Union All Output 1].Columns[klient]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Klienci\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DFT Klienci\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Klienci\Union All.Inputs[Union All Input 2].Columns[klient]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="klient"
+                      lineageId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output].Columns[klient]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Klienci\Union All.Outputs[Union All Output 1].Columns[klient]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT Klienci\Union All.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Klienci\Union All.Inputs[Union All Input 3].Columns[klient]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="klient"
+                      lineageId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output].Columns[klient]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Klienci\Union All.Outputs[Union All Output 1].Columns[klient]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT Klienci\Union All.Inputs[Union All Input 4]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 4">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Klienci\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Klienci\Union All.Outputs[Union All Output 1].Columns[klient]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Klienci\Union All.Outputs[Union All Output 1].Columns[klient]"
+                      name="klient" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Klienci.Paths[Derived Column Output]"
+              endId="Package\DFT Klienci\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT Klienci\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT Klienci.Paths[Flat File Source Output]"
+              endId="Package\DFT Klienci\Union All.Inputs[Union All Input 2]"
+              name="Flat File Source Output"
+              startId="Package\DFT Klienci\Flat File Source Frania2004.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\DFT Klienci.Paths[OLE DB Source Output]"
+              endId="Package\DFT Klienci\Union All.Inputs[Union All Input 3]"
+              name="OLE DB Source Output"
+              startId="Package\DFT Klienci\OLE DB Source Frania200507.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT Klienci.Paths[Sort Output]"
+              endId="Package\DFT Klienci\Derived Column.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\DFT Klienci\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\DFT Klienci.Paths[Union All Output 1]"
+              endId="Package\DFT Klienci\Sort.Inputs[Sort Input]"
+              name="Union All Output 1"
+              startId="Package\DFT Klienci\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT regiony"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2b8bf9e0-e516-46ca-846b-87c3d657a587}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT regiony"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT regiony\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT regiony\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT regiony\Derived Column.Inputs[Derived Column Input].Columns[region]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="region"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].Columns[region]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].Columns[region]} == "Others" ? "Pozostale" : #{Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].Columns[region]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">region == "Others" ? "Pozostale" : region</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT regiony\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT regiony\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT regiony\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT regiony\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT regiony\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT regiony\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT regiony\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT regiony\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT regiony\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1045"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT regiony\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Frania]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Frania]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].Columns[region]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[region]"
+                      length="50"
+                      lineageId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ID]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[hist_plan]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="hist_plan" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[data]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="data" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[grupa]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="grupa" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[podgrupa]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="podgrupa" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[sprzet]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="sprzet" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[klient]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="klient" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[region]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ilosc]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="ilosc" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[cena_hurt]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="cena_hurt" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[obrot]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="obrot" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1250"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT regiony\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Regiony]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT regiony\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-NSG5088.Frania]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-NSG5088.Frania]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT regiony\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT regiony\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[region]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="region"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DFT regiony\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      lineageId="Package\DFT regiony\Sort.Outputs[Sort Output].Columns[region]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Region" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT regiony\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT regiony\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT regiony\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT regiony\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT regiony\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT regiony\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT regiony\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[frania200507]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT regiony\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-NSG5088.Frania]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-NSG5088.Frania]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      length="50"
+                      lineageId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hist_plan]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="hist_plan" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[data]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="data" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[grupa]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="grupa" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[podgrupa]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="podgrupa" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[sprzet]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="sprzet" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[klient]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="klient" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ilosc]"
+                      dataType="i4"
+                      name="ilosc" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cena_hurt]"
+                      dataType="cy"
+                      name="cena_hurt" />
+                    <externalMetadataColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[obrot]"
+                      dataType="cy"
+                      name="obrot" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[region]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[region]"
+                      name="region" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT regiony\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT regiony\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT regiony\Sort.Inputs[Sort Input].Columns[region]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="region"
+                      lineageId="Package\DFT regiony\Union All.Outputs[Union All Output 1].Columns[region]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT regiony\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT regiony\Sort.Outputs[Sort Output].Columns[region]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT regiony\Sort.Outputs[Sort Output].Columns[region]"
+                      name="region"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT regiony\Union All.Outputs[Union All Output 1].Columns[region]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT regiony\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DFT regiony\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT regiony\Union All.Inputs[Union All Input 1].Columns[region]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="region"
+                      lineageId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT regiony\Union All.Outputs[Union All Output 1].Columns[region]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT regiony\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT regiony\Union All.Inputs[Union All Input 2].Columns[region]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="region"
+                      lineageId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output].Columns[region]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT regiony\Union All.Outputs[Union All Output 1].Columns[region]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT regiony\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT regiony\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT regiony\Union All.Outputs[Union All Output 1].Columns[region]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT regiony\Union All.Outputs[Union All Output 1].Columns[region]"
+                      name="region" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT regiony.Paths[Derived Column Output]"
+              endId="Package\DFT regiony\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\DFT regiony\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT regiony.Paths[Flat File Source Output]"
+              endId="Package\DFT regiony\Derived Column.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT regiony\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\DFT regiony.Paths[OLE DB Source Output]"
+              endId="Package\DFT regiony\Union All.Inputs[Union All Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\DFT regiony\OLE DB Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT regiony.Paths[Sort Output]"
+              endId="Package\DFT regiony\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Sort Output"
+              startId="Package\DFT regiony\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\DFT regiony.Paths[Union All Output 1]"
+              endId="Package\DFT regiony\Sort.Inputs[Sort Input]"
+              name="Union All Output 1"
+              startId="Package\DFT regiony\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4cbd33b5-38cc-4332-91f8-ec98de7e9391}"
+      DTS:From="Package\DFT Klienci"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT regiony" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="132,41.6"
+          Id="Package\DFT Klienci"
+          TopLeft="61.4285714316125,60.7647058816826" />
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\DFT regiony"
+          TopLeft="276.547607256526,60" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="193.428571431612,81.1823529408413">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83.1190358249137,0"
+              Start="0,0"
+              End="75.6190358249137,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="75.6190358249137,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Klienci">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="206.4,41.6"
+          Id="Package\DFT Klienci\Flat File Source Frania2004"
+          TopLeft="24.6666672585739,138.83333332128" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\DFT Klienci\Union All"
+          TopLeft="278.833321677314,88.0333331766393" />
+        <NodeLayout
+          Size="171.2,43.2"
+          Id="Package\DFT Klienci\OLE DB Destination"
+          TopLeft="916.547569010214,90.1333327065575" />
+        <NodeLayout
+          Size="219.2,41.6"
+          Id="Package\DFT Klienci\OLE DB Source Frania200507"
+          TopLeft="21.6666654828523,30.3333331223991" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT Klienci\Derived Column"
+          TopLeft="663.833302280971,92.9000000180801" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\DFT Klienci\Sort"
+          TopLeft="482.499973637363,90.1333327065574" />
+        <EdgeLayout
+          Id="Package\DFT Klienci.Paths[Sort Output]"
+          TopLeft="580.099973637363,112.316666362319">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83.7333286436071,0"
+              Start="0,0"
+              End="76.2333286436071,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="76.2333286436071,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Klienci.Paths[OLE DB Source Output]"
+          TopLeft="240.866665482852,51.1333331223991">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="37.9666561944621,52.1000000542402"
+              Start="0,0"
+              End="30.4666561944621,52.1000000542402">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="17.9362902456892,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.9362902456892,0"
+                    Point2="21.9362902456892,0"
+                    Point3="21.9362902456892,4" />
+                  <mssgle:LineSegment
+                    End="21.9362902456892,48.1000000542402" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.9362902456892,48.1000000542402"
+                    Point2="21.9362902456892,52.1000000542402"
+                    Point3="25.9362902456892,52.1000000542402" />
+                  <mssgle:LineSegment
+                    End="30.4666561944621,52.1000000542402" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Klienci.Paths[Flat File Source Output]"
+          TopLeft="231.066667258574,159.63333332128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="47.7666544187405,-45.2000001446406"
+              Start="0,0"
+              End="40.2666544187405,-45.2000001446406">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="23.598511441939,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.598511441939,0"
+                    Point2="27.598511441939,0"
+                    Point3="27.598511441939,-4" />
+                  <mssgle:LineSegment
+                    End="27.598511441939,-41.2000001446406" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.598511441939,-41.2000001446406"
+                    Point2="27.598511441939,-45.2000001446406"
+                    Point3="31.598511441939,-45.2000001446406" />
+                  <mssgle:LineSegment
+                    End="40.2666544187405,-45.2000001446406" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Klienci.Paths[Derived Column Output]"
+          TopLeft="816.633302280971,112.716666362319">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99.9142667292434,0"
+              Start="0,0"
+              End="92.4142667292434,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="92.4142667292434,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Klienci.Paths[Union All Output 1]"
+          TopLeft="398.833321677314,109.883332941598">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83.666651960049,0"
+              Start="0,0"
+              End="76.166651960049,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="76.166651960049,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Klienci\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Klienci\OLE DB Source Frania200507">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT regiony">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\DFT regiony\Sort"
+          TopLeft="725.999989181757,82.9999987632036" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\DFT regiony\Flat File Source"
+          TopLeft="44.5000003129244,134.49999897182" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\DFT regiony\Union All"
+          TopLeft="527.499994009733,86.5000005811453" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\DFT regiony\OLE DB Source"
+          TopLeft="36.4999999850988,36.4999999850988" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT regiony\Derived Column"
+          TopLeft="296.499997004867,136.499999389052" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DFT regiony\OLE DB Destination"
+          TopLeft="900.499988898635,79.5000011324882" />
+        <EdgeLayout
+          Id="Package\DFT regiony.Paths[OLE DB Source Output]"
+          TopLeft="188.499999985099,57.2999999850988">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="338.999994024634,44.4000005960464"
+              Start="0,0"
+              End="331.499994024634,44.4000005960464">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="191.866663214233,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="191.866663214233,0"
+                    Point2="195.866663214233,0"
+                    Point3="195.866663214233,4" />
+                  <mssgle:LineSegment
+                    End="195.866663214233,40.4000005960464" />
+                  <mssgle:CubicBezierSegment
+                    Point1="195.866663214233,40.4000005960464"
+                    Point2="195.866663214233,44.4000005960464"
+                    Point3="199.866663214233,44.4000005960464" />
+                  <mssgle:LineSegment
+                    End="331.499994024634,44.4000005960464" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT regiony.Paths[Flat File Source Output]"
+          TopLeft="195.700000312924,156.299999180436">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="100.799996691943,0"
+              Start="0,0"
+              End="93.2999966919427,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="93.2999966919427,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT regiony.Paths[Derived Column Output]"
+          TopLeft="449.299997004867,157.299999389052">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="78.1999970048666,-44.3999988079071"
+              Start="0,0"
+              End="70.6999970048666,-44.3999988079071">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="41.1822204917007,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41.1822204917007,0"
+                    Point2="45.1822204917007,0"
+                    Point3="45.1822204917007,-4" />
+                  <mssgle:LineSegment
+                    End="45.1822204917007,-40.3999988079071" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45.1822204917007,-40.3999988079071"
+                    Point2="45.1822204917007,-44.3999988079071"
+                    Point3="49.1822204917007,-44.3999988079071" />
+                  <mssgle:LineSegment
+                    End="70.6999970048666,-44.3999988079071" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT regiony.Paths[Union All Output 1]"
+          TopLeft="647.499994009733,105.549999672174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="78.4999951720237,0"
+              Start="0,0"
+              End="70.9999951720237,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="70.9999951720237,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT regiony.Paths[Sort Output]"
+          TopLeft="823.599989181757,102.049999947846">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="76.8999997168777,0"
+              Start="0,0"
+              End="69.3999997168777,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="69.3999997168777,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT regiony\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT regiony\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
