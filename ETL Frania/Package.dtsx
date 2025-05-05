@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{E8F1ACE9-CBE3-4134-B6B5-3915D8C2FEC7}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{EC96AA83-D116-46D4-9112-15854DE5A807}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -150,6 +150,23 @@
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create Dim Czas Procedure"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Fill Dim Czas"
+      DTS:DTSID="{b6e62e31-e5b2-4828-a23f-52c5da6466d2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Dim Czas Procedure"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F8647518-78BB-44CA-8CA8-7DBC64AFF85D}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;GO&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;DROP PROCEDURE dbo.sPopulateDimCzas;&#xA;GO&#xA;&#xA;-- Tworzenie procedury&#xA;CREATE PROCEDURE dbo.sPopulateDimCzas&#xA;AS&#xA;BEGIN&#xA;    SET NOCOUNT ON;&#xA;&#xA;    -- Usuwamy poprzednie dane (truncowanie odpada przy PK z FK)&#xA;    DELETE FROM Dim_Czas;&#xA;&#xA;    DECLARE @rok INT = 2004;&#xA;    DECLARE @miesiac INT = 1;&#xA;    DECLARE @id CHAR(6);&#xA;&#xA;    WHILE @rok &lt;= 2020&#xA;    BEGIN&#xA;        WHILE @miesiac &lt;= 12&#xA;        BEGIN&#xA;            -- Generujemy Id w formacie MMyyyy, np. 012004&#xA;            SET @id = RIGHT('0' + CAST(@miesiac AS VARCHAR(2)), 2) + CAST(@rok AS CHAR(4));&#xA;&#xA;            INSERT INTO Dim_Czas (Id, Miesiac, Kwartal, Rok)&#xA;            VALUES (&#xA;                @id,&#xA;                @miesiac,&#xA;                CEILING(@miesiac / 3.0),&#xA;                @rok&#xA;            );&#xA;&#xA;            SET @miesiac = @miesiac + 1;&#xA;        END&#xA;&#xA;        SET @miesiac = 1;&#xA;        SET @rok = @rok + 1;&#xA;    END&#xA;END&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\DFT Klienci"
       DTS:CreationName="Microsoft.Pipeline"
@@ -1572,6 +1589,23 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute Dim Czas Procedure"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute Dim Czas Procedure"
+      DTS:DTSID="{a2dac571-9f8b-4c59-9a43-482e05433493}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Dim Czas Procedure"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F8647518-78BB-44CA-8CA8-7DBC64AFF85D}"
+          SQLTask:SqlStatementSource="EXEC dbo.sPopulateDimCzas;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -1582,6 +1616,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\DFT regiony" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{fcb0871b-02fd-4ae5-9111-722f6244a192}"
+      DTS:From="Package\Create Dim Czas Procedure"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Execute Dim Czas Procedure" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1594,7 +1636,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="132,41.6"
           Id="Package\DFT Klienci"
@@ -1617,6 +1659,36 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="75.6190358249137,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="206.4,41.6"
+          Id="Package\Create Dim Czas Procedure"
+          TopLeft="61.4285714316125,162.364705881683" />
+        <NodeLayout
+          Size="214.4,41.6"
+          Id="Package\Execute Dim Czas Procedure"
+          TopLeft="317.261892425958,164.631372741204" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="267.828571431612,184.298039311443">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.433320994345,0"
+              Start="0,0"
+              End="41.933320994345,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="41.933320994345,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
