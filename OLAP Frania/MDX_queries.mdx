@@ -1,0 +1,150 @@
+/* zad1 
+Jaki by³ obrót ze sprzeda¿y i liczba sprzedanych sztuk okapów (podgrupa) w poszczególnych regionach w drugim kwartale 2006 roku?
+*/
+SELECT  {[Measures].[Obrot], [Measures].[Ilosc] } ON COLUMNS,
+        { [Dim Regiony].[Region].MEMBERS } ON ROWS
+FROM  [FraniaCube]
+WHERE {(([Dim Czas].[Kwartal].&[2]), ([Dim Czas].[Rok].&[2006]), ([Dim Towary].[Podgrupa].&[okapy]))};
+
+/* zad2 
+Poni¿sze zapytanie SQL dla hurtowni FraniaDW wyraŸ w jêzyku MDX dla kostki FraniaCube:
+
+```
+SELECT region, towar, SUM(ilosc) [ilosc], Count(*) [ile transakcji]
+FROM Sprzedaz_hist
+     JOIN [Dim_Towary] ON Sprzedaz_hist.IdTowary = [Dim_Towary].id
+     JOIN [Dim_Regiony] ON Sprzedaz_hist.IdRegion = [Dim_Regiony].id
+     JOIN [Dim_Czas] ON Sprzedaz_hist.IdCzas = [Dim_Czas].id
+WHERE podgrupa = 'okapy'
+      AND rok = 2006
+GROUP BY region, towar;
+```
+*/
+SELECT {[Measures].[Ilosc], [Measures].[Sprzedaz Hist Count]} ON COLUMNS,
+	{([Dim Regiony].[Region].[Region], [Dim Towary].[Towar].[Towar])} ON ROWS
+FROM [FraniaCube]
+WHERE {([Dim Towary].[Podgrupa].&[okapy], [Dim Czas].[Rok].&[2006])};
+
+/* zad 3 
+Podaj podobne informacje co w zadaniu 2 (tylko iloœæ, z podzia³em na regiony i towary, dla okapów w 2006r.) ale w nastêpuj¹cej formie:
+*/
+SELECT {NONEMPTY([Dim Towary].[Towar].[Towar])} ON COLUMNS,
+	{[Dim Regiony].[Region].[Region]} ON ROWS
+FROM [FraniaCube]
+WHERE {(([Measures].[Ilosc]),([Dim Towary].[Podgrupa].&[okapy], [Dim Czas].[Rok].&[2006]))};
+
+ /* zad 4 
+ Podaj informacje o liczbie sprzedanych okapów poszczególnych rodzajów, w pierwszych czterech miesi¹cach 2006 roku
+
+    Wymaganie: wykorzystaj operator przedzia³u „:” (dla miesiêcy) oraz funkcjê CHILDREN dla okapów (uwaga - "okapy" weŸ z hierarchii stworzonej na wymiarze Towary, bo wtedy funkcja CHILDREN zadzia³a poprawnie)
+*/
+SELECT {[Dim Czas].[Miesiac].&[1]:[Dim Czas].[Miesiac].&[4]} ON COLUMNS,
+	{[Dim Towary].[Hierarchy].[Podgrupa Hierarchia].&[okapy BI].Children} ON ROWS
+FROM [FraniaCube]
+WHERE {([Measures].[Ilosc], [Dim Czas].[Rok].&[2006])};
+
+/* zad 5 
+Podaj informacjê o liczbie sprzedanych zmywarek w 2007 r, posortowan¹ malej¹co:
+
+    Wskazówka: Do eliminacji wartoœci pustych wykorzystaj NONEMPTY(zbior1, zbior2). Do sortowania - ORDER() z parametrem DESC (patrz Przyk³ad 4)
+*/
+SELECT {[Dim Regiony].[Id] AS [Ilosc]} ON COLUMNS,
+ORDER ({NONEMPTYCROSSJOIN({([Dim Towary].[Grupa].[Grupa],[Dim Regiony].[Region].[Region] )})},[Measures].[Ilosc],desc) ON ROWS
+FROM   [FraniaCube]
+WHERE  ([Measures].[Ilosc],[Dim Towary].[Podgrupa].&[zmywarki], [Dim Czas].[Rok].&[2007]);
+
+/* zad 6 
+Wyœwietl Wartoœæ (cena*ilosc, fakt zdefiniowany wczeœniej w kostce) sprzeda¿y dla klientów AVANS i MEDIA MARKT wraz z podsumowaniem
+
+Podsumowanie utwórz za pomoc¹ funkcji AGGREGATE
+
+    Wskazówka:
+        Podsumowanie "Zagregowane" utwórz jako nowy element kalkulowany w klauzuli: WITH MEMBER .... AS ... :
+        dodaj go w wymiarze Klienci poziomu Klient;
+        w definicji wyra¿enia wykorzystaj funkcjê AGGREGATE ({zbiór})
+*/
+WITH SET [ZbiorKlienci] AS '{[Dim Klienci].[Klient].&[AVANS], [Dim Klienci].[Klient].&[MEDIA MARKT]}'
+	MEMBER [Dim klienci].[klient].[zagregowane] as AGGREGATE([ZbiorKlienci])
+SELECT {[Measures].[Obrot - Sprzedaz Plan]} ON COLUMNS,
+        {([ZbiorKlienci]), ([Dim klienci].[klient].[zagregowane])} ON ROWS
+FROM [FraniaCube];
+
+/* zad 7 
+Podaj informacje o regionach dokonuj¹cych najwiêcej zakupów zmywarek z grupy BI i FS, dla roku 2007
+*/
+WITH MEMBER [Measures].[max_shopping] AS 
+        Max([Dim Regiony].[Region].[Region], [Measures].[Ilosc])
+SELECT  {[Measures].[Ilosc]} ON COLUMNS,
+        {([Dim Towary].[Grupa].[Grupa], FILTER({([Dim Regiony].[Region].[Region])}, [Measures].[Ilosc] =  [Measures].[max_shopping]))} ON ROWS
+FROM [FraniaCube]
+WHERE {([Dim Czas].[Rok].&[2007], [Dim Towary].[Podgrupa].&[zmywarki])};
+
+/* zad 8 
+Podaj, jaki jest procentowy udzia³ w rynku poszczególnych podgrup sprzêtowych (stosunek obrotu danej podgrupy do ca³kowitego obrotu)
+
+    uwaga: w bie¿¹cym wierszu mamy dostêp do wartoœci zagregowanej na poziomie danego wiersza, ale mo¿emy te¿ odwo³aæ siê do bardziej ogólnego lub bardziej szczegó³owego poziomu agregacji, definiuj¹c wprost poziom wymiaru
+*/
+WITH MEMBER [Measures].[UdzialRynek] AS  '([Measures].[Obrot]/([Measures].[Obrot],[Dim Towary].[Podgrupa].[All]))', format = '#.00%'
+SELECT  {[Measures].[UdzialRynek]} ON COLUMNS,
+        {[Dim Towary].[Podgrupa].[Podgrupa]} ON ROWS
+FROM   [FraniaCube];
+
+/* zad 9 
+Dla ka¿dego towaru podaj do jakiej podgrupy i grupy nale¿y:
+*/
+WITH 
+    MEMBER [supgroup] as '[Dim Towary].[Hierarchy].Parent.Name'
+    MEMBER [group] as '[Dim Towary].[Hierarchy].Parent.Parent.Name'
+SELECT {([supgroup]),([group])} on columns,
+       {([Dim Towary].[Hierarchy].[Towar Hierarchia].Members)} on rows
+FROM [FraniaCube];
+
+/* zad 10 
+Wykorzystuj¹c doœwiadczenia z zadania 8 i 9 podaj udzia³ procentowy obrotu poszczególnych towarów w ich podgrupach i grupach produktowych
+*/
+WITH 
+	MEMBER [UdzialPodgrupa] AS  ' ([Measures].[Obrot]/([Measures].[Obrot],[Dim Towary].[Hierarchy].Parent))', format = '#0.00%'
+	MEMBER [UdzialGrupa] AS  ' ([Measures].[Obrot]/([Measures].[Obrot],[Dim Towary].[Hierarchy].Parent.Parent))', format = '#0.00%'
+ 	MEMBER [UdzialRynek] AS  ' ([Measures].[Obrot]/([Measures].[Obrot],[Dim Towary].[Hierarchy].[All]))', format = '#0.00%'
+SELECT  {([UdzialPodgrupa]), ([UdzialGrupa]),([UdzialRynek])} ON COLUMNS,
+        {[Dim Towary].[Hierarchy].[Towar Hierarchia].Members} ON ROWS
+FROM   [FraniaCube];
+
+/* zad 11 
+Podaj liczbê zakupionych towarów w poszczególnych regionach; nastêpnie utwórz dwa podsumowania dla zbioru 3 najlepszych regionów oraz reszty regionów
+*/
+WITH SET [Najlepsi] as 'TOPCOUNT([Dim Regiony].[Region].[Region], 3, [Measures].[Ilosc])'
+     SET [Reszta] as 'EXCEPT([Dim Regiony].[Region].[Region], [Najlepsi])'
+     MEMBER [Dim Regiony].[Region].[Najlepsi-suma] as 'SUM([Najlepsi])'
+     MEMBER [Dim Regiony].[Region].[Reszta-suma] as 'SUM([Reszta])'
+SELECT  [Measures].[Ilosc] ON COLUMNS,
+        {([Dim Regiony].[Region].[Region]), ([Dim Regiony].[Region].[Najlepsi-suma]), ([Dim Regiony].[Region].[Reszta-suma])} ON ROWS
+FROM  [FraniaCube];
+
+/* zad 12 
+Zbadaj sprzeda¿ wszystkich lodówek (lodowki dwudrzwiowe i lodowki kombi) w kolejnych miesi¹cach 2006 wraz z iloœcia skumulowan¹ (tzn liczba sprzedanych sztuk dla kazdego miesi¹ca i suma narastaj¹ca)
+
+    wykorzystaj: YTD([«member»])
+*/
+WITH 
+   MEMBER [Measures].[Akumulacja] as 'Sum(YTD(),[Measures].[Ilosc])' 
+SELECT {[Measures].[Ilosc],[Measures].[Akumulacja]} on columns, 
+   {([Dim Czas].[Hierarchy].[Rok].&[2006].&[1].Children),([Dim Czas].[Hierarchy].[Rok].&[2006].&[2].Children),([Dim Czas].[Hierarchy].[Rok].&[2006].&[3].Children),([Dim Czas].[Hierarchy].[Rok].&[2006].&[4].Children)} on rows 
+FROM [FraniaCube]
+WHERE {([Dim Towary].[Towar].&[lodowki kombi]),([Dim Towary].[Towar].&[lodowki dwudrzwiowe])}
+
+/* zad 13 
+Utwórz miarê Skok, która zbada, czy w danym regionie od ostatniego kwarta³u nast¹pi³ wzrost czy spadek obrotów. (weŸ pod uwagê tylko rok 2006)
+
+    mo¿e Ci siê przydaæ:
+        .CurrentMember
+        .PrevMember
+        ISEMPTY()
+        IIF()
+*/
+WITH
+	MEMBER [is_empty] AS ISEMPTY([Dim Czas].[Kwartal].CurrentMember.PrevMember)
+	MEMBER [increase] AS IIF(([is_empty]) = false, IIF(([Measures].[Obrot], [Dim Czas].[Kwartal].CurrentMember.PrevMember) < ([Measures].[Obrot], [Dim Czas].[Kwartal].CurrentMember), 'wzrost', 'spadek'), "-")
+SELECT  {([Measures].[Obrot]) AS [Obrot Hist], ([increase])} ON COLUMNS,
+        {([Dim Regiony].[Region].[Region], [Dim Czas].[Kwartal].Children)} ON ROWS
+FROM    [FraniaCube];
