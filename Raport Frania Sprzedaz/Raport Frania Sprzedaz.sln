@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Raport Frania Sprzedaz", "Raport Frania Sprzedaz.rptproj", "{AC4CDD5C-099A-EC90-E79E-E80FEDDE703A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC4CDD5C-099A-EC90-E79E-E80FEDDE703A}.Debug|Default.ActiveCfg = Debug
+		{AC4CDD5C-099A-EC90-E79E-E80FEDDE703A}.Debug|Default.Build.0 = Debug
+		{AC4CDD5C-099A-EC90-E79E-E80FEDDE703A}.Debug|Default.Deploy.0 = Debug
+		{AC4CDD5C-099A-EC90-E79E-E80FEDDE703A}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{AC4CDD5C-099A-EC90-E79E-E80FEDDE703A}.DebugLocal|Default.Build.0 = DebugLocal
+		{AC4CDD5C-099A-EC90-E79E-E80FEDDE703A}.Release|Default.ActiveCfg = Release
+		{AC4CDD5C-099A-EC90-E79E-E80FEDDE703A}.Release|Default.Build.0 = Release
+		{AC4CDD5C-099A-EC90-E79E-E80FEDDE703A}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {905E3EEB-8A37-4C72-89E6-22993ADB17A8}
+	EndGlobalSection
+EndGlobal

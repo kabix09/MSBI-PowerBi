@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>FraniaDW</DataSourceReference>
+      <CommandText>EVALUATE SUMMARIZECOLUMNS('Dim Klienci'[Klient], 'Dim Czas'[Id], 'Dim Czas'[Rok], 'Dim Czas'[Kwartal], 'Dim Czas'[Miesiac], "Obrot", [Obrot])</CommandText>
+      <rd:DesignerState>
+        <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+          <CommandType>DAX</CommandType>
+          <QuerySpecification xsi:type="MDXQuerySpecification">
+            <Select>
+              <Items>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Klienci</DimensionName>
+                    <HierarchyName>Klient</HierarchyName>
+                    <HierarchyUniqueName>[Dim Klienci].[Klient]</HierarchyUniqueName>
+                    <LevelName>Klient</LevelName>
+                    <UniqueName>[Dim Klienci].[Klient].[Klient]</UniqueName>
+                  </ID>
+                  <ItemCaption>Klient</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Czas</DimensionName>
+                    <HierarchyName>Id</HierarchyName>
+                    <HierarchyUniqueName>[Dim Czas].[Id]</HierarchyUniqueName>
+                    <LevelName>Id</LevelName>
+                    <UniqueName>[Dim Czas].[Id].[Id]</UniqueName>
+                  </ID>
+                  <ItemCaption>Id</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Czas</DimensionName>
+                    <HierarchyName>Rok</HierarchyName>
+                    <HierarchyUniqueName>[Dim Czas].[Rok]</HierarchyUniqueName>
+                    <LevelName>Rok</LevelName>
+                    <UniqueName>[Dim Czas].[Rok].[Rok]</UniqueName>
+                  </ID>
+                  <ItemCaption>Rok</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Czas</DimensionName>
+                    <HierarchyName>Kwartal</HierarchyName>
+                    <HierarchyUniqueName>[Dim Czas].[Kwartal]</HierarchyUniqueName>
+                    <LevelName>Kwartal</LevelName>
+                    <UniqueName>[Dim Czas].[Kwartal].[Kwartal]</UniqueName>
+                  </ID>
+                  <ItemCaption>Kwartal</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Czas</DimensionName>
+                    <HierarchyName>Miesiac</HierarchyName>
+                    <HierarchyUniqueName>[Dim Czas].[Miesiac]</HierarchyUniqueName>
+                    <LevelName>Miesiac</LevelName>
+                    <UniqueName>[Dim Czas].[Miesiac].[Miesiac]</UniqueName>
+                  </ID>
+                  <ItemCaption>Miesiac</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>Obrot</MeasureName>
+                    <UniqueName>[Measures].[Obrot]</UniqueName>
+                  </ID>
+                  <ItemCaption>Obrot</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+              </Items>
+            </Select>
+            <AutoExecute>false</AutoExecute>
+            <From>FraniaCube</From>
+            <Filter>
+              <FilterItems />
+            </Filter>
+            <Calculations />
+            <Aggregates />
+            <QueryProperties>
+              <IncludeMemberValue>true</IncludeMemberValue>
+            </QueryProperties>
+          </QuerySpecification>
+          <Query>
+            <Statement>EVALUATE SUMMARIZECOLUMNS('Dim Klienci'[Klient], 'Dim Czas'[Id], 'Dim Czas'[Rok], 'Dim Czas'[Kwartal], 'Dim Czas'[Miesiac], "Obrot", [Obrot])</Statement>
+            <ParameterDefinitions />
+          </Query>
+        </QueryDefinition>
+      </rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="Klient">
+        <DataField>Dim Klienci[Klient]</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Id">
+        <DataField>Dim Czas[Id]</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Rok">
+        <DataField>Dim Czas[Rok]</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Kwartal">
+        <DataField>Dim Czas[Kwartal]</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Miesiac">
+        <DataField>Dim Czas[Miesiac]</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Obrot">
+        <DataField>[Obrot]</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

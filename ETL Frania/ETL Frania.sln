@@ -9,12 +9,24 @@ Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "Frania(DESKTOP-NSG5088)", "
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
 		Development|Default = Development|Default
+		Release|Default = Release|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{719B0CA3-103A-4707-B46C-F2533B36FD9E}.Debug|Default.ActiveCfg = Development
+		{719B0CA3-103A-4707-B46C-F2533B36FD9E}.Debug|Default.Build.0 = Development
+		{719B0CA3-103A-4707-B46C-F2533B36FD9E}.DebugLocal|Default.ActiveCfg = Development
+		{719B0CA3-103A-4707-B46C-F2533B36FD9E}.DebugLocal|Default.Build.0 = Development
 		{719B0CA3-103A-4707-B46C-F2533B36FD9E}.Development|Default.ActiveCfg = Development
 		{719B0CA3-103A-4707-B46C-F2533B36FD9E}.Development|Default.Build.0 = Development
+		{719B0CA3-103A-4707-B46C-F2533B36FD9E}.Release|Default.ActiveCfg = Development
+		{719B0CA3-103A-4707-B46C-F2533B36FD9E}.Release|Default.Build.0 = Development
+		{51787520-AE17-8BD1-EF39-2495D5839553}.Debug|Default.ActiveCfg = Development
+		{51787520-AE17-8BD1-EF39-2495D5839553}.DebugLocal|Default.ActiveCfg = Development
 		{51787520-AE17-8BD1-EF39-2495D5839553}.Development|Default.ActiveCfg = Development
+		{51787520-AE17-8BD1-EF39-2495D5839553}.Release|Default.ActiveCfg = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
