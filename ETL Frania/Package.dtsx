@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{1A946579-1D06-4E08-AF11-DCD3FB1FF360}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{5ACE2592-164F-4230-8A89-5E05CC889BE0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -4464,6 +4464,23 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
           SQLTask:SqlStatementSource="EXEC dbo.sPopulateDimCzas;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Dim Towary"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Fill Dim Czas"
+      DTS:DTSID="{cbb5671f-ceda-4d96-8457-9922ed000d91}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Dim Towary"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F8647518-78BB-44CA-8CA8-7DBC64AFF85D}"
+          SQLTask:SqlStatementSource="ALTER TABLE Dim_Towary&#xA;ADD Towar_Hierarchia VARCHAR(50),&#xA;    Podgrupa_Hierarchia VARCHAR(50),&#xA;    Grupa_Hierarchia VARCHAR(2);&#xA;GO&#xA;&#xA;UPDATE Dim_Towary&#xA;SET Towar_Hierarchia = Towar + ' ' + Grupa,&#xA;    Podgrupa_Hierarchia = Podgrupa + ' ' + Grupa,&#xA;    Grupa_Hierarchia = Grupa;&#xA;GO&#xA;&#xA;SELECT * FROM Dim_Towary;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -4498,6 +4515,14 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\DFT Sprzedaz" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{7883D7E8-317D-427F-B286-6A862FEFAF0D}"
+      DTS:From="Package\DFT Sprzedaz"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Update Dim Towary" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -4512,6 +4537,10 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="206.4,41.6"
+          Id="Package\Create Dim Czas Procedure"
+          TopLeft="61.4285714316125,162.364705881683" />
+        <NodeLayout
           Size="132,41.6"
           Id="Package\DFT Klienci"
           TopLeft="61.4285714316125,60.7647058816826" />
@@ -4519,6 +4548,14 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
           Size="135.2,41.6"
           Id="Package\DFT regiony"
           TopLeft="276.547607256526,60" />
+        <NodeLayout
+          Size="145.6,41.6"
+          Id="Package\DFT Sprzedaz"
+          TopLeft="700.714287078199,94.9372552442908" />
+        <NodeLayout
+          Size="214.4,41.6"
+          Id="Package\Execute Dim Czas Procedure"
+          TopLeft="317.976178141764,165.396078622886" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="193.428571431612,81.1823529408413">
@@ -4541,14 +4578,6 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="206.4,41.6"
-          Id="Package\Create Dim Czas Procedure"
-          TopLeft="61.4285714316125,162.364705881683" />
-        <NodeLayout
-          Size="214.4,41.6"
-          Id="Package\Execute Dim Czas Procedure"
-          TopLeft="317.976178141764,165.396078622886" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="267.828571431612,184.680392252284">
@@ -4571,10 +4600,6 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="145.6,41.6"
-          Id="Package\DFT Sprzedaz"
-          TopLeft="700.714287078199,94.9372552442908" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="411.747607256526,80.8">
@@ -4643,6 +4668,44 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Update Dim Towary"
+          TopLeft="688.314286077692,234.878431592215" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="796.447620411532,136.537255244291">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-22.1333343338406,98.341176347924"
+              Start="0,0"
+              End="-22.1333343338406,90.841176347924">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.9778260370908" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.9778260370908"
+                    Point2="0,39.9778260370908"
+                    Point3="-4,39.9778260370908" />
+                  <mssgle:LineSegment
+                    End="-18.1333343338406,39.9778260370908" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.1333343338406,39.9778260370908"
+                    Point2="-22.1333343338406,39.9778260370908"
+                    Point3="-22.1333343338406,43.9778260370908" />
+                  <mssgle:LineSegment
+                    End="-22.1333343338406,90.841176347924" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -4652,6 +4715,10 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\DFT Klienci\Sort"
+          TopLeft="482.499973637363,90.1333327065574" />
+        <NodeLayout
           Size="206.4,41.6"
           Id="Package\DFT Klienci\Flat File Source Frania2004"
           TopLeft="24.6666672585739,138.83333332128" />
@@ -4659,10 +4726,6 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
           Size="120,41.6"
           Id="Package\DFT Klienci\Union All"
           TopLeft="278.833321677314,88.0333331766393" />
-        <NodeLayout
-          Size="171.2,43.2"
-          Id="Package\DFT Klienci\OLE DB Destination"
-          TopLeft="916.547569010214,90.1333327065575" />
         <NodeLayout
           Size="219.2,41.6"
           Id="Package\DFT Klienci\OLE DB Source Frania200507"
@@ -4672,9 +4735,31 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
           Id="Package\DFT Klienci\Derived Column"
           TopLeft="663.833302280971,92.9000000180801" />
         <NodeLayout
-          Size="97.6,41.6"
-          Id="Package\DFT Klienci\Sort"
-          TopLeft="482.499973637363,90.1333327065574" />
+          Size="171.2,43.2"
+          Id="Package\DFT Klienci\OLE DB Destination"
+          TopLeft="916.547569010214,90.1333327065575" />
+        <EdgeLayout
+          Id="Package\DFT Klienci.Paths[Union All Output 1]"
+          TopLeft="398.833321677314,109.883332941598">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83.666651960049,0"
+              Start="0,0"
+              End="76.166651960049,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="76.166651960049,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Klienci.Paths[Sort Output]"
           TopLeft="580.099973637363,112.316666362319">
@@ -4787,33 +4872,11 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Klienci.Paths[Union All Output 1]"
-          TopLeft="398.833321677314,109.883332941598">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="83.666651960049,0"
-              Start="0,0"
-              End="76.166651960049,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="76.166651960049,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT Klienci\OLE DB Destination">
+    design-time-name="Package\DFT Klienci\OLE DB Source Frania200507">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4826,7 +4889,7 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT Klienci\OLE DB Source Frania200507">
+    design-time-name="Package\DFT Klienci\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4842,7 +4905,7 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
     design-time-name="Package\DFT regiony">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="97.6,41.6"
           Id="Package\DFT regiony\Sort"
@@ -4867,6 +4930,54 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
           Size="171.2,41.6"
           Id="Package\DFT regiony\OLE DB Destination"
           TopLeft="900.499988898635,79.5000011324882" />
+        <EdgeLayout
+          Id="Package\DFT regiony.Paths[Union All Output 1]"
+          TopLeft="647.499994009733,105.549999672174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="78.4999951720237,0"
+              Start="0,0"
+              End="70.9999951720237,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="70.9999951720237,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT regiony.Paths[Sort Output]"
+          TopLeft="823.599989181757,102.049999947846">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="76.8999997168777,0"
+              Start="0,0"
+              End="69.3999997168777,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="69.3999997168777,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT regiony.Paths[OLE DB Source Output]"
           TopLeft="188.499999985099,57.2999999850988">
@@ -4898,7 +5009,9 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4920,7 +5033,9 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4954,51 +5069,9 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT regiony.Paths[Union All Output 1]"
-          TopLeft="647.499994009733,105.549999672174">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="78.4999951720237,0"
-              Start="0,0"
-              End="70.9999951720237,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="70.9999951720237,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT regiony.Paths[Sort Output]"
-          TopLeft="823.599989181757,102.049999947846">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="76.8999997168777,0"
-              Start="0,0"
-              End="69.3999997168777,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="69.3999997168777,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5087,40 +5160,6 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
           Size="206.4,41.6"
           Id="Package\DFT Sprzedaz\Flat File Source Frania2004"
           TopLeft="402.166646632884,103.099999529918" />
-        <EdgeLayout
-          Id="Package\DFT Sprzedaz.Paths[Data Conversion Output]"
-          TopLeft="482.166644583975,310.266664798392">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-87.9999882984501,96.8999999095997"
-              Start="0,0"
-              End="-87.9999882984501,89.3999999095997">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.3749999464735" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,53.3749999464735"
-                    Point2="0,57.3749999464735"
-                    Point3="-4,57.3749999464735" />
-                  <mssgle:LineSegment
-                    End="-83.9999882984501,57.3749999464735" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-83.9999882984501,57.3749999464735"
-                    Point2="-87.9999882984501,57.3749999464735"
-                    Point3="-87.9999882984501,61.3749999464735" />
-                  <mssgle:LineSegment
-                    End="-87.9999882984501,89.3999999095997" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Sprzedaz.Paths[Aggregate Output 1]"
           TopLeft="1140.49994181097,310.766664816472">
@@ -5413,6 +5452,40 @@ where [refTable].[Grupa] = ? and [refTable].[Podgrupa] = ? and [refTable].[Towar
                     Point3="-17.6333369758393,28.0166661272777" />
                   <mssgle:LineSegment
                     End="-17.6333369758393,40.5333322545555" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Sprzedaz.Paths[Data Conversion Output]"
+          TopLeft="482.166644583975,310.266664798392">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-87.9999882984501,96.8999999095997"
+              Start="0,0"
+              End="-87.9999882984501,89.3999999095997">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.3749999464735" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,53.3749999464735"
+                    Point2="0,57.3749999464735"
+                    Point3="-4,57.3749999464735" />
+                  <mssgle:LineSegment
+                    End="-83.9999882984501,57.3749999464735" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-83.9999882984501,57.3749999464735"
+                    Point2="-87.9999882984501,57.3749999464735"
+                    Point3="-87.9999882984501,61.3749999464735" />
+                  <mssgle:LineSegment
+                    End="-87.9999882984501,89.3999999095997" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
